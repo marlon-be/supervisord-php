@@ -1,0 +1,6 @@
+{
+    "name": "marlon-be/supervisord-php",
+    "autoload": {
+        "classmap": "lib/"
+    }
+}
