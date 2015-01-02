@@ -58,7 +58,12 @@ class Supervisord {
         );
 
         $context  = stream_context_create($options);
-        $file     = file_get_contents($this->_url, false, $context);
+
+        $file = @file_get_contents($this->_url, false, $context);
+        if($file === false) {
+            throw new Exception('Supervisord cannot be reached ('.$this->_url.')');
+        }
+
         $response = xmlrpc_decode(trim($file));
 
         if (!$response)
